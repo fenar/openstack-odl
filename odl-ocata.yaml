@@ -266,7 +266,7 @@ services:
     num_units: 1
     options:
       install-url: "https://nexus.opendaylight.org/content/repositories/opendaylight.release/org/opendaylight/integration/distribution-karaf/0.6.0-Carbon/distribution-karaf-0.6.0-Carbon.tar.gz"
-      profile: "openvswitch-odl-carbon"
+      profile: "openvswitch-odl-boron"
     annotations: 
       gui-x: '648.5'
       gui-y: '452'
