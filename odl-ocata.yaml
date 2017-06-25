@@ -132,6 +132,8 @@ services:
     options:
       block-device: None
       glance-api-version: 2
+      openstack-origin: 'cloud:xenial-ocata'
+      worker-multiplier: 0.25
     to:
     - lxd:1
   cinder-ceph:
@@ -148,6 +150,7 @@ services:
     num_units: 1
     options:
       openstack-origin: 'cloud:xenial-ocata'
+      worker-multiplier: 0.25
     to:
     - lxd:2
   keystone:
@@ -159,6 +162,7 @@ services:
     options:
       admin-password: admin
       openstack-origin: 'cloud:xenial-ocata'
+      worker-multiplier: 0.25
     to:
     - lxd:3
   mysql:
@@ -168,7 +172,8 @@ services:
     charm: cs:xenial/percona-cluster
     num_units: 1
     options:
-      max-connections: 20000
+      innodb-buffer-pool-size: 512M
+      max-connections: 1000
     to:
     - lxd:0
   neutron-api:
@@ -182,6 +187,7 @@ services:
       flat-network-providers: "physnet1"
       manage-neutron-plugin-legacy-mode: "false"
       openstack-origin: 'cloud:xenial-ocata'
+      worker-multiplier: 0.25
     to:
     - lxd:1
   neutron-gateway:
@@ -196,6 +202,7 @@ services:
       plugin: "ovs-odl"
       instance-mtu: "1400"
       openstack-origin: 'cloud:xenial-ocata'
+      worker-multiplier: 0.25
     to:
     - '0'
   openvswitch-odl: 
@@ -213,6 +220,7 @@ services:
       network-manager: Neutron
       console-access-protocol: "novnc"
       openstack-origin: 'cloud:xenial-ocata'
+      worker-multiplier: 0.25
     to:
     - lxd:2
   nova-compute:
