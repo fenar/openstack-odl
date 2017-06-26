@@ -4,7 +4,8 @@ There are three bundles included in this project folder: <br>
 	(a) odl-mitaka-beryllium.yaml<br>	
 	(b) odl-newton-boron.yaml<br> 	
 	(c) odl-ocata-carbon.yaml<br> 
-	->This Deployment is failing and issue reported to charm-devops team: https://bugs.launchpad.net/charm-odl-controller/+bug/1700628
+	--->This Deployment is failing and issue reported to charm-devops team: <br>
+	----->https://bugs.launchpad.net/charm-odl-controller/+bug/1700628
 	<br>
 
 Pre-Condition:<br>
