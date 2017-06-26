@@ -6,7 +6,7 @@ There are two bundles included in this project folder: <br>
 
 Pre-Condition:<br>
 (X) MaaS Node interfaces are named as "eth0" and "eth1"<br>
-(Y) Mikrotik Switch Setup Corrected to move 172.27.v4n#+2.0/23 network to vlan1 bridge to allow ingress/egress traffic.<br>
+(Y) Mikrotik Switch Setup Corrected to move 172.27.[v4n#+2].0/23 network to vlan1 bridge to allow ingress/egress traffic.<br>
 
 Prep:<br>
 (A) Bootstrap Juju Controller<br>
