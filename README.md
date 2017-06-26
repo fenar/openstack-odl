@@ -18,7 +18,7 @@ Bundle is straight forward:<br>
 (2) Execute 02-orange-box-confugure-openstack to provision Openstack IaaS.<br>
 (3) Setup ODL Web GUI:<br>
 -> juju ssh odl-controller/0<br>
--> cd /opt/distribution-karaf-*/bin<br>
+-> cd /opt/opendaylight-karaf/bin<br>
 -> ./client -u karaf feature:install odl-dlux-all<br>
 -> go to http://<odl-controller-ipaddr>:8181/index.html admin/admin<br>
 
