@@ -1,5 +1,7 @@
-ODL = Open DayLight is a fully opensource SDN in consortium with the OPNFV organization.
-This Bundle Created to work with Juju2.0 & 0.4.2-Beryllium-SR2 Release.
+ODL = Open DayLight is a fully opensource SDN in consortium with the OPNFV organization.<br>
+There are two bundles included in this project folder: <br>
+(1) odl-mitaka.yaml, this bundle is based on openstack mitaka release and ODL Beryllium-SR2 Release. <br>
+(2) odl-ocata.yaml, this bundle is based on openstack ocata release and ODL Boron-SR4 Release.<br>
 
 Pre-Condition:
 (X) MaaS Node interfaces are named as "eth0" and "eth1"
