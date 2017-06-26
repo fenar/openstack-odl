@@ -1,5 +1,6 @@
 #!/bin/bash
-
+# Author: Fatih E. NAR
+# 
 model=`juju list-models |awk '{print $1}'|grep odl`
 
 if [[ ${model:0:3} == "odl" ]]; then
