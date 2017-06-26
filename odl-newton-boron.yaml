@@ -132,7 +132,7 @@ services:
     options:
       block-device: None
       glance-api-version: 2
-      openstack-origin: 'cloud:xenial-ocata'
+      openstack-origin: 'cloud:xenial-newton'
       worker-multiplier: 0.25
     to:
     - lxd:1
@@ -149,7 +149,7 @@ services:
     charm: cs:xenial/glance
     num_units: 1
     options:
-      openstack-origin: 'cloud:xenial-ocata'
+      openstack-origin: 'cloud:xenial-newton'
       worker-multiplier: 0.25
     to:
     - lxd:2
@@ -161,7 +161,7 @@ services:
     num_units: 1
     options:
       admin-password: admin
-      openstack-origin: 'cloud:xenial-ocata'
+      openstack-origin: 'cloud:xenial-newton'
       worker-multiplier: 0.25
     to:
     - lxd:3
@@ -188,7 +188,7 @@ services:
       default-tenant-network-type: vxlan
       flat-network-providers: "physnet1"
       manage-neutron-plugin-legacy-mode: "false"
-      openstack-origin: 'cloud:xenial-ocata'
+      openstack-origin: 'cloud:xenial-newton'
       worker-multiplier: 0.25
     to:
     - lxd:1
@@ -196,19 +196,19 @@ services:
     annotations:
       gui-x: '0'
       gui-y: '0'
-    charm: cs:~narindergupta/neutron-gateway-6
+    charm: cs:xenial/neutron-gateway
     num_units: 1
     options:
       flat-network-providers: "physnet1"
       ext-port: "eth1"
       plugin: "ovs-odl"
       instance-mtu: "1400"
-      openstack-origin: 'cloud:xenial-ocata'
+      openstack-origin: 'cloud:xenial-newton'
       worker-multiplier: 0.25
     to:
     - '0'
   openvswitch-odl: 
-    charm: cs:~narindergupta/openvswitch-odl-3
+    charm: cs:xenial/openvswitch-odl
     annotations: 
       gui-x: '448.5'
       gui-y: '798.4101615137754'
@@ -221,7 +221,7 @@ services:
     options:
       network-manager: Neutron
       console-access-protocol: "novnc"
-      openstack-origin: 'cloud:xenial-ocata'
+      openstack-origin: 'cloud:xenial-newton'
       worker-multiplier: 0.25
     to:
     - lxd:2
@@ -235,8 +235,8 @@ services:
       enable-live-migration: true
       enable-resize: true
       migration-auth-type: ssh
-      virt-type: kvm
-      openstack-origin: 'cloud:xenial-ocata'
+      virt-type: qemu
+      openstack-origin: 'cloud:xenial-newton'
     to:
     - '1'
     - '2'
@@ -254,7 +254,7 @@ services:
     charm: cs:xenial/openstack-dashboard
     num_units: 1
     options:
-      openstack-origin: 'cloud:xenial-ocata'
+      openstack-origin: 'cloud:xenial-newton'
       webroot: "/"
       ubuntu-theme: "no"
     to:
@@ -271,8 +271,7 @@ services:
     charm: cs:xenial/odl-controller
     num_units: 1
     options:
-      #install-url: "https://nexus.opendaylight.org/content/repositories/opendaylight.release/org/opendaylight/integration/distribution-karaf/0.6.0-Carbon/distribution-karaf-0.6.0-Carbon.tar.gz"
-      install-url: "https://nexus.opendaylight.org/content/repositories/opendaylight.release/org/opendaylight/integration/distribution-karaf/0.5.4-Boron-SR4/distribution-karaf-0.5.4-Boron-SR4.tar.gz"
+      install-url: "https://nexus.opendaylight.org/content/groups/public/org/opendaylight/integration/distribution-karaf/0.5.4-Boron-SR4/distribution-karaf-0.5.4-Boron-SR4.tar.gz"
       profile: "openvswitch-odl-boron"
     annotations: 
       gui-x: '648.5'
@@ -280,7 +279,7 @@ services:
     to: 
     - lxd:0
   neutron-api-odl: 
-    charm: cs:~narindergupta/neutron-api-odl-11
+    charm: cs:xenial/neutron-api-odl
     annotations: 
       gui-x: '533.4999389648438'
       gui-y: '274'
