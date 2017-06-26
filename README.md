@@ -8,14 +8,6 @@ There are three bundles included in this project folder: <br>
 	----->https://bugs.launchpad.net/charm-odl-controller/+bug/1700628
 	<br>
 
-Pre-Condition:<br>
-(X) MaaS Node interfaces are named as "eth0" and "eth1"<br>
-(Y) Mikrotik Switch Setup Corrected to move 172.27.[v4n#+2].0/23 network to vlan1 bridge to allow ingress/egress traffic.<br>
-
-Prep:<br>
-(A) Bootstrap Juju Controller<br>
-(B) Execute get-cloud-images from openstack demo folder<br>
-
 Bundle is straight forward:<br>
 (1) Execute 01-deploy.sh script that Builds ODL Model and Deploys the Bundle.<br>
 -> Once All Juju Nodes reach Active and Ready<br>
