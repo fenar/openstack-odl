@@ -16,7 +16,7 @@ Prep:<br>
 Bundle is straight forward:<br>
 (1) Execute 01-deploy.sh script that Builds ODL Model and Deploys the Bundle.<br>
 -> Once All Juju Nodes reach Active and Ready<br>
-(2) Execute 02-orange-box-confugure-openstack to provision Openstack IaaS.<br>
+(2) Execute 02-provision-openstack.sh to provision Openstack IaaS.<br>
 (3) Setup ODL Web GUI:<br>
 -> juju ssh odl-controller/0<br>
 -> cd /opt/opendaylight-karaf/bin<br>
