@@ -25,4 +25,4 @@ Bundle is straight forward:<br>
 
 You are Good to Go to Demo VM Launch and Access over Floating IP, SSH to it etc and see on ODL Gui How the Flows are Provisoned!<br>
 
-(4) Execute 99-reset-model script to destroy ODL Model.<br>
+(4) Execute 08-destroy-model script to destroy ODL Model.<br>
