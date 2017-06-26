@@ -127,7 +127,7 @@ services:
     annotations:
       gui-x: '750'
       gui-y: '0'
-    charm: cs:xenial/cinder
+    charm: cs:~openstack-charmers-next/cinder
     num_units: 1
     options:
       block-device: None
@@ -146,7 +146,7 @@ services:
     annotations:
       gui-x: '250'
       gui-y: '0'
-    charm: cs:xenial/glance
+    charm: cs:~openstack-charmers-next/glance
     num_units: 1
     options:
       openstack-origin: 'cloud:xenial-newton'
@@ -157,7 +157,7 @@ services:
     annotations:
       gui-x: '500'
       gui-y: '0'
-    charm: cs:xenial/keystone
+    charm: cs:~openstack-charmers-next/keystone
     num_units: 1
     options:
       admin-password: admin
@@ -180,12 +180,12 @@ services:
     annotations:
       gui-x: '500'
       gui-y: '500'
-    charm: cs:xenial/neutron-api
+    charm: cs:~openstack-charmers-next/neutron-api
     num_units: 1
     options:
       neutron-security-groups: "true"
-      overlay-network-type: vxlan gre
-      default-tenant-network-type: vxlan
+      overlay-network-type: "gre vxlan"
+      default-tenant-network-type: gre
       flat-network-providers: "physnet1"
       manage-neutron-plugin-legacy-mode: "false"
       openstack-origin: 'cloud:xenial-newton'
@@ -196,7 +196,7 @@ services:
     annotations:
       gui-x: '0'
       gui-y: '0'
-    charm: cs:xenial/neutron-gateway
+    charm: cs:~openstack-charmers-next/neutron-gateway
     num_units: 1
     options:
       flat-network-providers: "physnet1"
@@ -208,7 +208,7 @@ services:
     to:
     - '0'
   openvswitch-odl: 
-    charm: cs:xenial/openvswitch-odl
+    charm: cs:~openstack-charmers-next/openvswitch-odl
     annotations: 
       gui-x: '448.5'
       gui-y: '798.4101615137754'
@@ -216,7 +216,7 @@ services:
     annotations:
       gui-x: '0'
       gui-y: '500'
-    charm: cs:xenial/nova-cloud-controller
+    charm: cs:~openstack-charmers-next/nova-cloud-controller
     num_units: 1
     options:
       network-manager: Neutron
@@ -229,7 +229,7 @@ services:
     annotations:
       gui-x: '250'
       gui-y: '250'
-    charm: cs:xenial/nova-compute
+    charm: cs:~openstack-charmers-next/nova-compute
     num_units: 3
     options:
       enable-live-migration: true
@@ -251,7 +251,7 @@ services:
     annotations:
       gui-x: '500'
       gui-y: '-250'
-    charm: cs:xenial/openstack-dashboard
+    charm: cs:~openstack-charmers-next/openstack-dashboard
     num_units: 1
     options:
       openstack-origin: 'cloud:xenial-newton'
@@ -268,7 +268,7 @@ services:
     to:
     - lxd:0
   odl-controller: 
-    charm: cs:xenial/odl-controller
+    charm: cs:~openstack-charmers-next/odl-controller
     num_units: 1
     options:
       install-url: "https://nexus.opendaylight.org/content/groups/public/org/opendaylight/integration/distribution-karaf/0.5.4-Boron-SR4/distribution-karaf-0.5.4-Boron-SR4.tar.gz"
@@ -279,11 +279,11 @@ services:
     to: 
     - lxd:0
   neutron-api-odl: 
-    charm: cs:xenial/neutron-api-odl
+    charm: cs:~openstack-charmers-next/neutron-api-odl
     annotations: 
       gui-x: '533.4999389648438'
       gui-y: '274'
     options: 
       vlan-ranges: "physnet2:1000:2000"
-      overlay-network-type: "vxlan gre"
+      overlay-network-type: "gre"
       security-groups: "true"
