@@ -1,8 +1,9 @@
 ODL = OpenDayLight is a fully opensource SDN in collaboration with the OPNFV organization.<br>
 
 There are two bundles included in this project folder: <br>
-(**a) odl-mitaka.yaml, this bundle is based on openstack mitaka release and ODL Beryllium-SR2. <br>
-(**b) odl-ocata.yaml, this bundle is based on openstack ocata release and Beryllium-SR2. <br>
+	(a) odl-mitaka-beryllium.yaml<br>	
+	(b) odl-newton-boron.yaml<br> 	
+	(c) odl-ocata-carbon.yaml<br>
 
 Pre-Condition:<br>
 (X) MaaS Node interfaces are named as "eth0" and "eth1"<br>
