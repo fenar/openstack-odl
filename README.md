@@ -1,6 +1,6 @@
 ODL = OpenDayLight is a fully opensource SDN in collaboration with the OPNFV organization.<br>
 
-There are two bundles included in this project folder: <br>
+There are three bundles included in this project folder: <br>
 	(a) odl-mitaka-beryllium.yaml<br>	
 	(b) odl-newton-boron.yaml<br> 	
 	(c) odl-ocata-carbon.yaml<br>
