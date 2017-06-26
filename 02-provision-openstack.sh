@@ -1,4 +1,6 @@
 #!/bin/bash
+# Author: Fatih E. NAR
+# 
 set -ex
 v4num=`hostname | cut -c 10- -`
 
