@@ -183,9 +183,8 @@ services:
     charm: cs:~openstack-charmers-next/neutron-api
     num_units: 1
     options:
-      neutron-security-groups: "true"
-      overlay-network-type: "gre vxlan"
-      default-tenant-network-type: gre
+      overlay-network-type: "vxlan gre"
+      default-tenant-network-type: "vxlan"
       flat-network-providers: "physnet1"
       manage-neutron-plugin-legacy-mode: "false"
       openstack-origin: 'cloud:xenial-newton'
@@ -200,9 +199,10 @@ services:
     num_units: 1
     options:
       flat-network-providers: "physnet1"
-      ext-port: "eth1"
       plugin: "ovs-odl"
       instance-mtu: "1400"
+      bridge-mappings: "physnet1:br-ex"
+      data-port: "br-ex:eth1"
       openstack-origin: 'cloud:xenial-newton'
       worker-multiplier: 0.25
     to:
@@ -284,6 +284,6 @@ services:
       gui-x: '533.4999389648438'
       gui-y: '274'
     options: 
-      vlan-ranges: "physnet2:1000:2000"
-      overlay-network-type: "gre"
+      #vlan-ranges: "physnet2:1000:2000"
+      overlay-network-type: "vxlan"
       security-groups: "true"

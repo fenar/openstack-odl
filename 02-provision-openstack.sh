@@ -4,6 +4,7 @@
 set -ex
 v4num=`hostname | cut -c 10- -`
 
+NEUTRON_DNS="172.27.$((v4num+3)).254"
 NEUTRON_NET_NAME="private_net"
 NEUTRON_NET_CIDR="192.168.$((v4num+3)).0/24"
 NEUTRON_SUBNET_NAME="private_subnet"
@@ -27,7 +28,6 @@ export OS_PASSWORD=admin
 export OS_TENANT_NAME=admin
 export OS_REGION_NAME=RegionOne
 " > nova.rc
-
 source nova.rc
 
 #Configure the default security group to allow ICMP and SSH
@@ -38,18 +38,28 @@ openstack security group rule create --proto tcp --dst-port 443 default
 openstack security group rule create --proto tcp --dst-port 3389 default
 openstack security group rule create --proto tcp --dst-port 8081 default
 
-# Tenant Network
-neutron net-create --shared $NEUTRON_NET_NAME
-neutron subnet-create --gateway $NEUTRON_SUBNET_GW --enable-dhcp --ip-version 4 --name $NEUTRON_SUBNET_NAME $NEUTRON_NET_NAME $NEUTRON_NET_CIDR
+chmod +x neutron-ext-net
+chmod +x neutron-tenant-net
 
 #EXT NET
-neutron net-create $NEUTRON_EXT_NET_NAME --router:external=True --shared --provider:physical_network=physnet1 --provider:network_type=flat
-neutron subnet-create --gateway $NEUTRON_EXT_NET_GW --enable-dhcp --ip-version 4 --allocation-pool start=$NEUTRON_EXT_NET_FLOAT_RANGE_START,end=$NEUTRON_EXT_NET_FLOAT_RANGE_END --dns-nameserver $NEUTRON_EXT_NET_DNS --name $NEUTRON_EXT_SUBNET_NAME $NEUTRON_EXT_NET_NAME $NEUTRON_EXT_NET_CIDR
+./neutron-ext-net -g $NEUTRON_EXT_NET_GW -c $NEUTRON_EXT_NET_CIDR  -f $NEUTRON_EXT_NET_FLOAT_RANGE_START:$NEUTRON_EXT_NET_FLOAT_RANGE_END $NEUTRON_EXT_NET_NAME
+
+#PRIVATE NET
+./neutron-tenant-net -t admin -r provider-router -N $NEUTRON_DNS private $NEUTRON_NET_CIDR
+
+
+# Tenant Network
+#neutron net-create --shared $NEUTRON_NET_NAME
+#neutron subnet-create --gateway $NEUTRON_SUBNET_GW --enable-dhcp --ip-version 4 --name $NEUTRON_SUBNET_NAME $NEUTRON_NET_NAME $NEUTRON_NET_CIDR
+
+#EXT NET
+#neutron net-create $NEUTRON_EXT_NET_NAME --router:external=True --shared --provider:physical_network=physnet1 --provider:network_type=flat
+#neutron subnet-create --gateway $NEUTRON_EXT_NET_GW --enable-dhcp --ip-version 4 --allocation-pool start=$NEUTRON_EXT_NET_FLOAT_RANGE_START,end=$NEUTRON_EXT_NET_FLOAT_RANGE_END --dns-nameserver $NEUTRON_EXT_NET_DNS --name $NEUTRON_EXT_SUBNET_NAME $NEUTRON_EXT_NET_NAME $NEUTRON_EXT_NET_CIDR
 
 #Provider Router
-neutron router-create ext-router
-neutron router-interface-add ext-router $NEUTRON_SUBNET_NAME
-neutron router-gateway-set ext-router $NEUTRON_EXT_NET_NAME
+#neutron router-create ext-router
+#neutron router-interface-add ext-router $NEUTRON_SUBNET_NAME
+#neutron router-gateway-set ext-router $NEUTRON_EXT_NET_NAME
 
 #Upload a default SSH key
 openstack keypair create  --public-key ~/.ssh/id_rsa.pub default
