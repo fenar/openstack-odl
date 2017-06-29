@@ -1,3 +1,4 @@
+# Openstack Newton ODL 0.5.4-Boron-SR4 SDN inside 
 # Author: Fatih E. NAR
 # 
 machines:
@@ -96,7 +97,7 @@ services:
     annotations:
       gui-x: '750'
       gui-y: '500'
-    charm: cs:xenial/ceph-mon
+    charm: cs:ceph-mon
     num_units: 3
     to:
     - lxd:1
@@ -106,7 +107,7 @@ services:
     annotations:
       gui-x: '1000'
       gui-y: '500'
-    charm: cs:xenial/ceph-osd
+    charm: cs:ceph-osd
     num_units: 3
     options:
       osd-devices: /dev/sdb
@@ -127,7 +128,7 @@ services:
     annotations:
       gui-x: '750'
       gui-y: '0'
-    charm: cs:~openstack-charmers-next/cinder
+    charm: cs:cinder
     num_units: 1
     options:
       block-device: None
@@ -140,13 +141,13 @@ services:
     annotations:
       gui-x: '750'
       gui-y: '250'
-    charm: cs:xenial/cinder-ceph
+    charm: cs:cinder-ceph
     num_units: 0
   glance:
     annotations:
       gui-x: '250'
       gui-y: '0'
-    charm: cs:~openstack-charmers-next/glance
+    charm: cs:glance
     num_units: 1
     options:
       openstack-origin: 'cloud:xenial-newton'
@@ -157,7 +158,7 @@ services:
     annotations:
       gui-x: '500'
       gui-y: '0'
-    charm: cs:~openstack-charmers-next/keystone
+    charm: cs:keystone
     num_units: 1
     options:
       admin-password: admin
@@ -169,7 +170,7 @@ services:
     annotations:
       gui-x: '0'
       gui-y: '250'
-    charm: cs:xenial/percona-cluster
+    charm: cs:percona-cluster
     num_units: 1
     options:
       innodb-buffer-pool-size: 512M
@@ -180,7 +181,7 @@ services:
     annotations:
       gui-x: '500'
       gui-y: '500'
-    charm: cs:~openstack-charmers-next/neutron-api
+    charm: cs:neutron-api
     num_units: 1
     options:
       flat-network-providers: "physnet1"
@@ -194,19 +195,19 @@ services:
     annotations:
       gui-x: '0'
       gui-y: '0'
-    charm: cs:~openstack-charmers-next/neutron-gateway
+    charm: cs:neutron-gateway
     num_units: 1
     options:
       flat-network-providers: "physnet1"
       plugin: "ovs-odl"
       instance-mtu: "1400"
-      ext-port: "eth1"
+      ext-port: eth1
       openstack-origin: 'cloud:xenial-newton'
       worker-multiplier: 0.25
     to:
     - '0'
   openvswitch-odl: 
-    charm: cs:~openstack-charmers-next/openvswitch-odl
+    charm: cs:openvswitch-odl
     annotations: 
       gui-x: '448.5'
       gui-y: '798.4101615137754'
@@ -214,7 +215,7 @@ services:
     annotations:
       gui-x: '0'
       gui-y: '500'
-    charm: cs:~openstack-charmers-next/nova-cloud-controller
+    charm: cs:nova-cloud-controller
     num_units: 1
     options:
       network-manager: Neutron
@@ -227,7 +228,7 @@ services:
     annotations:
       gui-x: '250'
       gui-y: '250'
-    charm: cs:~openstack-charmers-next/nova-compute
+    charm: cs:nova-compute
     num_units: 3
     options:
       enable-live-migration: true
@@ -249,7 +250,7 @@ services:
     annotations:
       gui-x: '500'
       gui-y: '-250'
-    charm: cs:~openstack-charmers-next/openstack-dashboard
+    charm: cs:openstack-dashboard
     num_units: 1
     options:
       openstack-origin: 'cloud:xenial-newton'
@@ -266,7 +267,7 @@ services:
     to:
     - lxd:0
   odl-controller: 
-    charm: cs:~openstack-charmers-next/odl-controller
+    charm: cs:odl-controller
     num_units: 1
     options:
       install-url: "https://nexus.opendaylight.org/content/groups/public/org/opendaylight/integration/distribution-karaf/0.5.4-Boron-SR4/distribution-karaf-0.5.4-Boron-SR4.tar.gz"
@@ -277,7 +278,7 @@ services:
     to: 
     - lxd:0
   neutron-api-odl: 
-    charm: cs:~openstack-charmers-next/neutron-api-odl
+    charm: cs:neutron-api-odl
     annotations: 
       gui-x: '533.4999389648438'
       gui-y: '274'

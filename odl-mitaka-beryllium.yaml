@@ -1,3 +1,4 @@
+# Openstack Mitaka with ODL SDN inside
 # Author: Fatih E. NAR
 # 
 machines:
@@ -96,7 +97,7 @@ services:
     annotations:
       gui-x: '750'
       gui-y: '500'
-    charm: cs:xenial/ceph-mon
+    charm: cs:ceph-mon
     num_units: 3
     to:
     - lxd:1
@@ -106,7 +107,7 @@ services:
     annotations:
       gui-x: '1000'
       gui-y: '500'
-    charm: cs:xenial/ceph-osd
+    charm: cs:ceph-osd
     num_units: 3
     options:
       osd-devices: /dev/sdb
@@ -119,7 +120,7 @@ services:
     annotations:
       gui-x: '1000'
       gui-y: '250'
-    charm: cs:xenial/ceph-radosgw
+    charm: cs:ceph-radosgw
     num_units: 1
     to:
     - lxd:0
@@ -127,7 +128,7 @@ services:
     annotations:
       gui-x: '750'
       gui-y: '0'
-    charm: cs:xenial/cinder
+    charm: cs:cinder
     num_units: 1
     options:
       block-device: None
@@ -138,13 +139,13 @@ services:
     annotations:
       gui-x: '750'
       gui-y: '250'
-    charm: cs:xenial/cinder-ceph
+    charm: cs:cinder-ceph
     num_units: 0
   glance:
     annotations:
       gui-x: '250'
       gui-y: '0'
-    charm: cs:xenial/glance
+    charm: cs:glance
     num_units: 1
     to:
     - lxd:2
@@ -152,7 +153,7 @@ services:
     annotations:
       gui-x: '500'
       gui-y: '0'
-    charm: cs:xenial/keystone
+    charm: cs:keystone
     num_units: 1
     options:
       admin-password: admin
@@ -162,7 +163,7 @@ services:
     annotations:
       gui-x: '0'
       gui-y: '250'
-    charm: cs:xenial/percona-cluster
+    charm: cs:percona-cluster
     num_units: 1
     options:
       max-connections: 20000
@@ -172,7 +173,7 @@ services:
     annotations:
       gui-x: '500'
       gui-y: '500'
-    charm: cs:xenial/neutron-api
+    charm: cs:neutron-api
     num_units: 1
     options:
       neutron-security-groups: "false"
@@ -184,7 +185,7 @@ services:
     annotations:
       gui-x: '0'
       gui-y: '0'
-    charm: cs:xenial/neutron-gateway
+    charm: cs:neutron-gateway
     num_units: 1
     options:
       flat-network-providers:  "physnet1"
@@ -194,7 +195,7 @@ services:
     to:
     - '0'
   openvswitch-odl: 
-    charm: cs:xenial/openvswitch-odl
+    charm: cs:openvswitch-odl
     annotations: 
       gui-x: '448.5'
       gui-y: '798.4101615137754'
@@ -202,7 +203,7 @@ services:
     annotations:
       gui-x: '0'
       gui-y: '500'
-    charm: cs:xenial/nova-cloud-controller
+    charm: cs:nova-cloud-controller
     num_units: 1
     options:
       network-manager: Neutron
@@ -213,7 +214,7 @@ services:
     annotations:
       gui-x: '250'
       gui-y: '250'
-    charm: cs:xenial/nova-compute
+    charm: cs:nova-compute
     num_units: 3
     options:
       enable-live-migration: true
@@ -228,7 +229,7 @@ services:
     annotations:
       gui-x: '1000'
       gui-y: '0'
-    charm: cs:xenial/ntp
+    charm: cs:ntp
     num_units: 0
   openstack-dashboard:
     annotations:
@@ -245,12 +246,12 @@ services:
     annotations:
       gui-x: '500'
       gui-y: '250'
-    charm: cs:xenial/rabbitmq-server
+    charm: cs:rabbitmq-server
     num_units: 1
     to:
     - lxd:0
   odl-controller: 
-    charm: cs:xenial/odl-controller
+    charm: cs:odl-controller
     num_units: 1
     options:
       install-url: "https://nexus.opendaylight.org/content/groups/public/org/opendaylight/integration/distribution-karaf/0.4.2-Beryllium-SR2/distribution-karaf-0.4.2-Beryllium-SR2.tar.gz"
@@ -261,7 +262,7 @@ services:
     to: 
     - lxd:0
   neutron-api-odl: 
-    charm: cs:xenial/neutron-api-odl
+    charm: cs:neutron-api-odl
     annotations: 
       gui-x: '533.4999389648438'
       gui-y: '274'
