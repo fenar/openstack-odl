@@ -2,7 +2,9 @@ ODL = OpenDayLight is a fully opensource SDN in collaboration with the OPNFV org
 
 There are three bundles included in this project folder: <br>
 	(a) odl-mitaka-beryllium.yaml<br>	
+	--->This Deployment is Tested with Success!
 	(b) odl-newton-boron.yaml<br> 	
+	--->This Deployment Succeeds but Flaoting IP does not work.<br>
 	(c) odl-ocata-carbon.yaml<br> 
 	--->This Deployment is failing and issue reported to charm-devops team: <br>
 	----->https://bugs.launchpad.net/charm-odl-controller/+bug/1700628
